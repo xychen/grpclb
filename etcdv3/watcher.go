@@ -21,7 +21,6 @@ func (w *watcher) Close() {
 func (w *watcher) Next() ([]*naming.Update, error) {
 	// prefix is the etcd prefix/value to watch
 	prefix := fmt.Sprintf("/%s/%s/", Prefix, w.re.serviceName)
-fmt.Println(prefix)
 	// check if is initialized
 	if !w.isInitialized {
 		// query addresses from etcd
