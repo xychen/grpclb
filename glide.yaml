@@ -1,0 +1,18 @@
+package: grpclb
+import:
+- package: github.com/coreos/etcd
+  version: v3.3.4
+  subpackages:
+  - clientv3
+  - mvcc/mvccpb
+- package: github.com/golang/protobuf
+  version: v1.1.0
+  subpackages:
+  - proto
+- package: golang.org/x/net
+  subpackages:
+  - context
+- package: google.golang.org/grpc
+  version: v1.11.3
+  subpackages:
+  - naming
