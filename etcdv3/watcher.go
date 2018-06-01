@@ -40,7 +40,10 @@ func (w *watcher) Next() ([]*naming.Update, error) {
 	}
 
 	// generate etcd Watcher
-	rch := w.client.Watch(context.Background(), prefix, etcd3.WithPrefix())
+	//rch := w.client.Watch(context.Background(), prefix, etcd3.WithPrefix())
+	ctx, cancel := context.WithCancel(context.Background())
+	rch := w.client.Watch(ctx, prefix, etcd3.WithPrefix())
+	defer cancel()
 	for wresp := range rch {
 		for _, ev := range wresp.Events {
 			switch ev.Type {
